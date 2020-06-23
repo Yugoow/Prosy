@@ -12,3 +12,7 @@ Extras:
 -Create a sound launcher (listen music while working)
 -Show notes (CCTL / Project / ..)
 (-Connect this app on a drive?)
+
+
+Idea : Acutally creating a reader and calculator for the notes in bloc wth a db.
+Automaticaly reading the objectives of the next CCTL
