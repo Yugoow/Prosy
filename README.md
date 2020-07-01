@@ -8,16 +8,15 @@ With this done, you can interact with your block by various <a href="#actions">a
 
 
 <h3 class="actions">Actions in a block:</h3>
-
-0 - Simulation                      -> Simulation up to 4 notes for the block validation<br>
-1 - Add notes                       -> Just adding notes in a block<br>
-2 - Delete notes (not available)    -> Deleting notes, but acutally not available<br>
-3 - See your notes                  -> See the notes (and the average) of the block<br>
-4 - Only the average                -> Show only the average of the block<br>
-5 - Rename the block                -> Rename the block<br>
-6 - Choose another block            -> Switching block<br>
-7 - Delete "name_of_the_block"      -> Delete the block (!! the notes are also deleted !!)<br>
-8 - Quit                            -> Quit the app<br>
+0 - Simulation&nbsp;&nbsp;&nbsp;&nbsp;-> Simulation up to 4 notes for the block validation<br>
+1 - Add notes&nbsp;&nbsp;&nbsp;&nbsp; -> Just adding notes in a block<br>
+2 - Delete notes (not available)&nbsp;-> Deleting notes, but acutally not available<br>
+3 - See your notes &nbsp;&nbsp;&nbsp; -> See the notes (and the average) of the block<br>
+4 - Only the average&nbsp;&nbsp;&nbsp;-> Show only the average of the block<br>
+5 - Rename the block&nbsp;&nbsp;&nbsp;-> Rename the block<br>
+6 - Choose another block &nbsp;&nbsp; -> Switching block<br>
+7 - Delete "name_of_the_block" &nbsp; -> Delete the block (!! the notes are also deleted !!)<br>
+8 - Quit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> Quit the app<br>
 <br>
 
 <h3>Incomming</h3>
