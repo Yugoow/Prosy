@@ -1,4 +1,4 @@
-# Prositus
+# Prosy
 App folder for prosit
 Gonna make an app in which you can :
  - Have access to all your prosit
@@ -13,6 +13,4 @@ Extras:
 -Show notes (CCTL / Project / ..)
 (-Connect this app on a drive?)
 
-
-Idea : Acutally creating a reader and calculator for the notes in bloc wth a db.
 Automaticaly reading the objectives of the next CCTL
