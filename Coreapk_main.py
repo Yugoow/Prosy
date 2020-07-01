@@ -271,7 +271,7 @@ bfr = "|  "
 if not os.path.isdir('data'):
 	os.makedirs("data")
 
-# Vérifier si le fichier existe ou non
+# File exist ?
 if os.path.isfile('data/note_base.db'):
     print("Fichier trouvé")
     conn = sqlite3.connect('data/note_base.db')
