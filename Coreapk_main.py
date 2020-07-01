@@ -1,5 +1,4 @@
 
-
 def add_block(name):
 	cursor.execute("INSERT INTO blocs(name,semestre) VALUES (?,2)",(name,))
 	conn.commit()
@@ -29,20 +28,25 @@ def add_noteinblock(name_block):
  	id_of_bloc=cursor.fetchall()
 
  	for i in range(1,nb_inblock+1):
- 		coeff = int(input(bfr+"Coef note " +str(i)+" : "))
+ 		try:
+ 			coeff = int(input(bfr+"Coef note " +str(i)+" : "))
+ 		except:
+ 			print("Wrong coefficient")
+ 			add_noteinblock(name_block)
+ 			return
+
  		notes = input(bfr+"Note " +str(i)+" : ")
  		notes=notes.upper()
  		if notes not in valid_notes:
  			print("You have entered the wrong value for : Note "+str(i)+"\nPlease retry...\n")
+ 			conn.rollback()
  			add_noteinblock(name_block)
- 
- 		cursor.executemany("""
+ 			return
+ 		else:
+ 			cursor.executemany("""
  			INSERT INTO notes(id_bloc,coef,note) VALUES(?, ?, ?)""",[(id_of_bloc[0][0],coeff,notes)])
 
- 	cursor.execute("SELECT coef, note FROM notes WHERE id_bloc=?",(id_of_bloc[0][0],))
  	conn.commit()
- 	calc = cursor.fetchall()
- 	print(calc)
  	noteinblock(name_block,req_note(name_block))
 
 def del_noteinblock(name):
@@ -58,6 +62,7 @@ def moyinblock(name_block, req):
 	if not req:
 		print(bfr+"There is no notes in this block, please add them first")
 		menu(name_block)
+		return
 
 	tot_note=0
 	tot_val=req[0][4]
@@ -180,6 +185,7 @@ def menu(name):
 	except:
 		print("Error, invalid entry\nPlease retry")
 		menu(name)
+		return
 	
 	if action==0:
 		sim_note(name)
@@ -253,7 +259,7 @@ def creation_db():
 def leaveall():
 	conn.close()
 	#If the repl doesn't close and create a locked database, be carrefull it stop every python processus running
-	os.system("TASKKILL /IM python.exe /F")
+	#os.system("TASKKILL /IM python.exe /F")
 	quit()
 
 
