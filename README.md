@@ -3,7 +3,7 @@
 Info : The database will be automatically created in your app folder.<br>
 At your first launch, you will be asked which blocks you want to work on but because you never launched it there is no blocks showed.<br>
 <h5>Add a block</h5>
-To add a new block just write a name block who doesn't exist (when you are asked to choose one) and it will be created automaticaly.<br>
+To add a new block just write a name block that doesn't exist (when you are asked to choose one) and it will be created automaticaly.<br>
 With this done, you can interact with your block by various <a href="#actions">actions</a>.<br>
 
 
