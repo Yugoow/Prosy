@@ -13,14 +13,14 @@ def del_block(intit):
 		cursor.execute("DELETE FROM notes WHERE id_bloc=(SELECT id FROM blocs WHERE name =?)",(intit,))
 		cursor.execute("DELETE FROM blocs WHERE name=?",(intit,))
 		conn.commit()
-		print("The block "+intit+" had been deleted")
+		print("The block "+intit+" has been deleted")
 	else:
 		print("Going back to the selection menu\n")
 	selectblock()
 
 
 def add_noteinblock(name_block):
- 	print("\nADD notes in block")
+ 	print("\nAdd notes in block")
  	valid_notes=("A","B","C","D")
  	nb_inblock=int(input(bfr + "Nbr of notes : "))
 
@@ -32,7 +32,7 @@ def add_noteinblock(name_block):
  		notes = input(bfr+"Note " +str(i)+" : ")
  		notes=notes.upper()
  		if notes not in valid_notes:
- 			print("You entered the wrong value for : Note "+str(i)+"\nPlease retry...\n")
+ 			print("You have entered the wrong value for : Note "+str(i)+"\nPlease retry...\n")
  			add_noteinblock(name_block)
  
  		cursor.executemany("""
@@ -54,7 +54,7 @@ def req_note(name_block):
 	return rows
 
 def moyinblock(name_block, req):
-	print("Calculating your average note...")
+	print("Calculation of your average score...")
 	tot_note=0
 	tot_val=req[0][4]
 	for row in req:
@@ -66,7 +66,7 @@ def moyinblock(name_block, req):
 		note_avg="A"
 	elif avg<3.6 :
 		note_avg="not validated"
-	print("Your actually average is :",avg,"\nYour note for the bloc is",note_avg,"\n")
+	print("Your current average is :",avg,"\nYour score in this block is",note_avg,"\n")
 	return tot_note, tot_val
 
 def noteinblock(name_block,rows):
@@ -81,7 +81,7 @@ def sim_note(name):
 	coeff_uni=[]
 	quest=False
 	while quest==False:
-		nbr_lft=int(input("Number of notes left in (4 max) "+name+"\n"))
+		nbr_lft=int(input("Number of notes to simulate (4 max) in "+name+"\n"))
 		if nbr_lft<5 and nbr_lft>0:
 			quest=True
 
@@ -91,7 +91,7 @@ def sim_note(name):
 		coeff_uni.append(coeff)
 
 	all_comb=list(itertools.product("5421", repeat=nbr_lft)) #All combinaisons
-	print("Chargement de la simulation ...\n")
+	print("Loading ...\n")
 
 	list_fin_A=[]
 	list_note_A=[]
@@ -114,7 +114,7 @@ def sim_note(name):
 	print("\nTo B :")
 
 	if not list_fin_B:
-		print("Impossible to have B with this number of notes...")
+		print("Impossible to get B with this number of notes...")
 	else:
 		for ibis in range(len(list_fin_B)):
 			buffe=[]
@@ -133,7 +133,7 @@ def sim_note(name):
 
 	print("\nTo A :")
 	if not list_fin_A:
-		print("Impossible to have A with this number of notes...")
+		print("Impossible to get A with this number of notes...")
 	else:
 		for ibis in range(len(list_fin_A)):
 			buffe=[]
@@ -168,7 +168,7 @@ def rename_block(name):
 
 
 def menu(name):
-	action=int(input("\n\nWhat do you want to do ?\n0 - Simulation\n1 - Add notes\n2 - Delete notes (not available)\n3 - See your notes\n4 - Only the average\n5 - Rename the block\n6 - Choose another block\n7 - Delete "+name+"\n8 - Quit\n"))
+	action=int(input("\n\nWhat do you want to do ?\n0 - Simulation\n1 - Add notes\n2 - Delete notes (not available)\n3 - See notes\n4 - See the average\n5 - Rename the block\n6 - Choose another block\n7 - Delete "+name+"\n8 - Quit\n"))
 
 	if action==0:
 		sim_note(name)
@@ -200,7 +200,7 @@ def selectblock():
 	for row in rows:
 		print("{0}".format(row[0]))
 
-	theblock=str(input("\nChose your block (if you want to leave write 'exit'): "))
+	theblock=str(input("\nChoose your block (if you want to leave write 'exit'): "))
 	for row in rows:
 		inrow.append(row[0])
 
@@ -246,7 +246,6 @@ def leaveall():
 import os.path, sqlite3, itertools
 
 
-print("Add by hand all the notes or note and this is the result of it..\n\n")
 bfr = "|  "
 
 if not os.path.isdir('data'):
