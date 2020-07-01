@@ -237,7 +237,7 @@ def selectblock():
 def creation_db():
 	global cursor,conn
 	try:
-		conn = sqlite3.connect('data/myown.db')
+		conn = sqlite3.connect('data/note_base.db')
 		cursor = conn.cursor()
 		cursor.execute('CREATE TABLE blocs(id INTEGER PRIMARY KEY NOT NULL, name VARCHAR(30), semestre INT);')
 
