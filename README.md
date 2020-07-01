@@ -1,8 +1,16 @@
 
 <h2>Special CESI calculator</h2>
+<h3>Steps</h3>
+<h5>Download</h5>
+Download the zip release
+<h5>Extract</h5>
+Extract the zip folder where you want the app to be (There is two folder in it, "build" > "exe.win-amd64-3.7" and in those you will find .exe file named <strong>"coreapk.exe"</strong>)
+<h5>Launch</h5>
+Launch the .exe file, you can create a shortcut for easier access
+<br>
 <h3>How to use</h3>
 Info : The database will be automatically created in your app folder.<br>
-At your first launch, you will be asked which blocks you want to work on but because you never launched it there is no blocks showed.<br>
+At your first launch, you will be asked which blocks you want to work on but because you never launched it there is no blocks showed.
 <h5>Add a block</h5>
 To add a new block just write a name block that doesn't exist (when you are asked to choose one) and it will be created automaticaly.<br>
 With this done, you can interact with your block by various <a href="#actions">actions</a>.<br>
