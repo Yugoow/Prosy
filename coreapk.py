@@ -42,7 +42,7 @@ def add_noteinblock(name_block):
  	conn.commit()
  	calc = cursor.fetchall()
  	print(calc)
- 	noteinblock(name_block)
+ 	noteinblock(name_block,req_note(name_block))
 
 def del_noteinblock(name):
 	print("Which one do you want to delete ?")
@@ -67,13 +67,90 @@ def moyinblock(name_block, req):
 	elif avg<3.6 :
 		note_avg="not validated"
 	print("Your actually average is :",avg,"\nYour note for the bloc is",note_avg,"\n")
-	return
-
+	return tot_note, tot_val
 
 def noteinblock(name_block,rows):
 	for row in rows:
 		print("Note :  {0}  |Valeur :  {1}  |Coefficient :  {2}".format(row[0],row[2],row[3]))
 	moyinblock(name_block, rows)
+
+
+def sim_note(name):
+	tot_note, tot_sadd=moyinblock(name,req_note(name))
+	coeff_lft=0
+	coeff_uni=[]
+	quest=False
+	while quest==False:
+		nbr_lft=int(input("Number of notes left in (4 max) "+name+"\n"))
+		if nbr_lft<5 and nbr_lft>0:
+			quest=True
+
+	for i in range(1,nbr_lft+1):
+		coeff = int(input("Coeff note "+str(i)+" : "))
+		coeff_lft+=coeff
+		coeff_uni.append(coeff)
+
+	all_comb=list(itertools.product("5421", repeat=nbr_lft)) #All combinaisons
+	print("Chargement de la simulation ...\n")
+
+	list_fin_A=[]
+	list_note_A=[]
+	list_fin_B=[]
+	list_note_B=[]
+	
+	for w in range(len(all_comb)):
+		tot_inlist=0
+		for j in range(nbr_lft):
+			tot_inlist+=int(all_comb[w][j])*coeff_uni[j]
+
+		moy_new=(tot_note+tot_inlist)/(tot_sadd+coeff_lft)
+		if moy_new>=3.6 and moy_new<4.6:
+			list_fin_B.append(all_comb[w])
+
+		if moy_new>=4.6:
+			list_fin_A.append(all_comb[w])
+
+
+	print("\nTo B :")
+
+	if not list_fin_B:
+		print("Impossible to have B with this number of notes...")
+	else:
+		for ibis in range(len(list_fin_B)):
+			buffe=[]
+			for jibis in range(nbr_lft):
+				if list_fin_B[ibis][jibis] == "5":
+					buffe.append("A")
+				elif list_fin_B[ibis][jibis] == "4":
+					buffe.append("B")
+				elif list_fin_B[ibis][jibis] == "2":
+					buffe.append("C")
+				elif list_fin_B[ibis][jibis] == "1":
+					buffe.append("D")
+			list_note_B.append(buffe)
+		for a in range(1,len(list_note_B)+1):
+			print("Combinaison ",a," : {0} | (coeff {1})".format(list_note_B[a-1], coeff_uni))
+
+	print("\nTo A :")
+	if not list_fin_A:
+		print("Impossible to have A with this number of notes...")
+	else:
+		for ibis in range(len(list_fin_A)):
+			buffe=[]
+			for jibis in range(nbr_lft):
+				if list_fin_A[ibis][jibis] == "5":
+					buffe.append("A")
+				elif list_fin_A[ibis][jibis] == "4":
+					buffe.append("B")
+				elif list_fin_A[ibis][jibis] == "2":
+					buffe.append("C")
+				elif list_fin_A[ibis][jibis] == "1":
+					buffe.append("D")
+			list_note_A.append(buffe)
+		for a in range(1,len(list_note_A)+1):
+			print("Combinaison ",a," : {0} | (coeff {1})".format(list_note_A[a-1], coeff_uni))
+
+
 
 
 def rename_block(name):
@@ -91,9 +168,11 @@ def rename_block(name):
 
 
 def menu(name):
-	action=int(input("\n\nWhat do you want to do ?\n1 - Add notes\n2 - Delete notes\n3 - See your notes\n4 - Only the average\n5 - Rename the block\n6 - Choose another block\n7 - Delete "+name+"\n8 - Quit\n"))
+	action=int(input("\n\nWhat do you want to do ?\n0 - Simulation\n1 - Add notes\n2 - Delete notes (not available)\n3 - See your notes\n4 - Only the average\n5 - Rename the block\n6 - Choose another block\n7 - Delete "+name+"\n8 - Quit\n"))
 
-	if action==1:
+	if action==0:
+		sim_note(name)
+	elif action==1:
 		add_noteinblock(name)
 	elif action==2:
 		del_noteinblock(name)
@@ -164,13 +243,14 @@ def leaveall():
 	os.system("TASKKILL /IM python.exe /F")
 
 
-import os.path, sqlite3
+import os.path, sqlite3, itertools
 
 
 print("Add by hand all the notes or note and this is the result of it..\n\n")
 bfr = "|  "
 
-
+if not os.path.isdir('data'):
+	os.makedirs("data")
 
 # Vérifier si le fichier existe ou non
 if os.path.isfile('data/myown.db'):
@@ -179,7 +259,6 @@ if os.path.isfile('data/myown.db'):
     cursor = conn.cursor()
 
 else:
-    print("Création de la base de donnée")
-    creation_db()
-
+	print("Création de la base de donnée")
+	creation_db()
 selectblock()
