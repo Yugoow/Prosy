@@ -8,7 +8,7 @@ With this done, you can interact with your block by various <a href="#actions">a
 
 
 <h3 class="actions">Actions in a block:</h3>
-0 - Simulation&nbsp;&nbsp;&nbsp;&nbsp;-> Simulation up to 4 notes for the block validation<br>
+0 - Simulation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> Simulation up to 4 notes for the block validation<br>
 1 - Add notes&nbsp;&nbsp;&nbsp;&nbsp; -> Just adding notes in a block<br>
 2 - Delete notes (not available)&nbsp;-> Deleting notes, but acutally not available<br>
 3 - See your notes &nbsp;&nbsp;&nbsp; -> See the notes (and the average) of the block<br>
