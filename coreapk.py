@@ -239,8 +239,9 @@ def creation_db():
 
 def leaveall():
 	conn.close()
-	#If the repl doesn't close and create a locked database, be carrefull it stop every python process running
+	#If the repl doesn't close and create a locked database, be carrefull it stop every python processus running
 	os.system("TASKKILL /IM python.exe /F")
+	quit()
 
 
 import os.path, sqlite3, itertools
