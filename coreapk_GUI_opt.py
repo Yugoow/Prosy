@@ -220,8 +220,8 @@ class Navbar(tk.Frame):
 
 
 
-	def search_navBlk(self):
-		self.navMsg_S.set("")
+	def search_navBlk(self, *event):
+		self.nMsg_S.set("")
 		
 		# getting entry value
 		self.navSearch_value = str(self.navSearch_ety.get())
@@ -241,8 +241,8 @@ class Navbar(tk.Frame):
 					self.info_cycle=self.blk_info[1]
 
 					#Settings messages
-					self.navMsg_S.set("Block "+self.navSearch_value+" found")
-					self.navMsg_E.set("")
+					self.nMsg_S.set("Block "+self.navSearch_value+" found")
+					self.nMsg_E.set("")
 
 					# forget nav creation block frame
 					self.navC_blk.grid_forget()
@@ -255,13 +255,13 @@ class Navbar(tk.Frame):
 
 			# comparing (if ver_var == False then the block searched doesn't exist in the db)
 			if ver_Var==False:
-				self.navMsg_E.set(self.navSearch_value+" doesn't exist")
+				self.nMsg_E.set(self.navSearch_value+" doesn't exist")
 
 				# Showing the frame for create the block
 				self.set_navCblk()
 
 		else:
-			self.navMsg_E.set("Oops, the entry is empty\nPlease retry")
+			self.nMsg_E.set("Oops, the entry is empty\nPlease retry")
 
 
 
@@ -287,16 +287,16 @@ class Navbar(tk.Frame):
 				self.workon_navTree(self.navSearch_value+navCblk_idCylce)
 				
 				# Settingd messages
-				self.navMsg_E.set("")
-				self.navMsg_S.set("Block "+ self.navSearch_value+" created")
+				self.nMsg_E.set("")
+				self.nMsg_S.set("Block "+ self.navSearch_value+" created")
 				
 				# Treeview synch childs
 				self.set_navTreeCh()
 
 			except:
-				self.navMsg_E.set("Oops this block already exist it seems")
+				self.nMsg_E.set("Oops this block already exist it seems")
 		else:
-			self.navMsg_E.set("The block can't be added")
+			self.nMsg_E.set("The block can't be added")
 
 
 
@@ -820,7 +820,7 @@ class Db_handling:
 			cursor = conn.cursor()
 
 		else:
-			Db_creation()
+			self.Db_creation()
 
 
 
@@ -923,9 +923,13 @@ def get_iidBlk():
 
 	id_spl=id_foc.split("_")
 
-	# get cycle in
-	cycleIn="_"+id_spl[1]+"_"+id_spl[2]
-	
+	try:
+		# get cycle in
+		cycleIn="_"+id_spl[1]+"_"+id_spl[2]
+	except:
+		# if there is no semesters selected
+		cycleIn="_"+id_spl[1]
+
 	# get name of the block
 	if id_spl[0]!='':
 		blockIn_name=id_spl[0]

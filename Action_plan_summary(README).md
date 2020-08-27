@@ -14,3 +14,5 @@ Extras:
 (-Connect this app on a drive?)
 
 Automaticaly reading the objectives of the next CCTL
+
+Opti into GUI (outarea) and .py without GUI
