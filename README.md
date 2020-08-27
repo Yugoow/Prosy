@@ -3,7 +3,7 @@
 An app, CESI calculator, with simulation (This is an unofficial app)
 <h3>Steps</h3>
 <h5>Download</h5>
-Download the zip release
+Download the latest <a href="https://github.com/Yugoow/Prosy/releases">zip release</a> 
 <h5>Extract</h5>
 Extract the zip folder where you want the app to be (There is two folder in it, "build" > "exe.win-amd64-3.7" and in those you will find .exe file named <strong>"coreapk.exe"</strong>)
 <h5>Launch</h5>
