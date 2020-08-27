@@ -30,8 +30,7 @@ With this done, you can interact with your block by various <a href="#actions">a
 <br>
 
 <h3>Incomming</h3>
-- Optimization
-- An interface (GUI) to make all interaction much easier.<br>
+- Optimization <br>
 - In french ?<br>
 - Pins which show finished blocks (Why not with the average of each)<br>
 - An history of the modifications ?<br>
