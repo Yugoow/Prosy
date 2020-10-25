@@ -5,7 +5,8 @@ from tkinter import ttk  # for the treeview
 import os.path, os, sqlite3, itertools
 
 
-#   Blk = block / ttl = title / ety = entry / btn = button / E = Error / S = Success / radb = radiobutton (S1 = semester 1 / S2 = semester 2)
+
+#	Blk = block / ttl = title / ety = entry / btn = button / E = Error / S = Success / radb = radiobutton (S1 = semester 1 / S2 = semester 2)
 #   reg = registration (dictionnary or summary) / Ch = childs / Foc= focus / Rnm = Rename / Frm = Frame / Spn = spin (spinbox)
 
 
@@ -289,7 +290,8 @@ class Navbar(tk.Frame):
             self.nMsg_E.set("The block can't be added")
 
 
-########## Output zone (=Output area)       ########TO DO
+
+########## Output zone (=Output area)		########TO DO
 
 class Outarea(tk.Frame):
     def __init__(self, parent, *args, **kwargs):
@@ -851,6 +853,7 @@ class Db_handling:
         for value in values:
             try:
                 cursor.executemany("""
+
                     INSERT INTO notes(id_bloc,coef,note) VALUES(?, ?, ?)""", [(id_blk, value[1], value[0])])
             except:
                 e_verif = False

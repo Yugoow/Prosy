@@ -1,6 +1,6 @@
 
 <h2>Special CESI calculator</h2>
-An app, CESI calculator, with simulation (This is an unofficial app)
+An app, CESI calculator, with simulation (This is an unofficial app made by a student for fun)
 <h3>Steps</h3>
 <h5>Download</h5>
 Download the latest <a href="https://github.com/Yugoow/Prosy/releases">zip release</a> 
